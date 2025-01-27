@@ -1,11 +1,6 @@
 {
   "name": "breeze256's MMRL Repository",
-  "website": "https://breeze256.is-local.org",
-  "support": null,
-  "donate": null,
-  "submission": null,
   "base_url": "https://breeze256.is-local.org/mmrl-repo/",
-  "description": "A Magisk repository for common usage.",
   "max_num": 2,
   "enable_log": true,
   "log_dir": "log"

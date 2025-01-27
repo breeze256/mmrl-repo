@@ -15,7 +15,6 @@
         devShell = pkgs.mkShell {
           buildInputs = [
             pkgs.python311
-            pkgs.zlib
             (pkgs.python3.withPackages (ps: [
               ps.venvShellHook
             ]))
