@@ -1,0 +1,1 @@
+import sys, os; sys.modules['__auto_libmagic__'] = __import__('pylibmagic')

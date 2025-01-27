@@ -14,16 +14,20 @@
       {
         devShell = pkgs.mkShell {
           buildInputs = [
-            pkgs.python311Full
+            pkgs.python311
+            pkgs.zlib
             (pkgs.python3.withPackages (ps: [
-              ps.pip
+              ps.venvShellHook
             ]))
           ];
 
           shellHook = ''
-            if ! pip freeze | grep -q mmrl-util==; then
-              pip install mmrl-util
-            fi
+            cp -f ./scripts/inject-libmagic.pth ./.venv/lib/python3.11/site-packages/inject-libmagic.pth
+            # Add virtual environment.
+            python -m venv .venv
+            source .venv/bin/activate
+            # Install requirements.
+            pip install -r requirements.txt
           '';
         };
       });

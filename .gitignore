@@ -9,3 +9,5 @@ util/
 
 # MacOS
 .DS_Store
+
+.venv
