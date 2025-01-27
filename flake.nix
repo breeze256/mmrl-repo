@@ -16,7 +16,7 @@
           buildInputs = [
             pkgs.python3
             (pkgs.python3.withPackages (ps: [
-              ps.pandoc
+              ps.pypandoc
             ]))
           ];
 
