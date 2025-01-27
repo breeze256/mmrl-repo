@@ -1,8 +1,6 @@
 name: sync-build-deploy
 on:
-  schedule:
-    - cron: '0 */6 * * *'
-
+  schedule: [ {cron: '0 */6 * * *'} ]
   workflow_dispatch:
    inputs:
       run_sync:
@@ -10,9 +8,7 @@ on:
         type: choice
         required: true
         default: 'No'
-        options:
-         - 'Yes'
-         - 'No'
+        options: [ 'Yes', 'No' ]
 
 permissions:
   contents: write
