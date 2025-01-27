@@ -14,15 +14,15 @@
       {
         devShell = pkgs.mkShell {
           buildInputs = [
-            pkgs.python3
+            pkgs.python311Full
             (pkgs.python3.withPackages (ps: [
-              ps.pypandoc
+              ps.pip
             ]))
           ];
 
           shellHook = ''
             if ! pip freeze | grep -q mmrl-util==; then
-              pip install --user mmrl-util
+              pip install mmrl-util
             fi
           '';
         };
