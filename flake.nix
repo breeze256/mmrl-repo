@@ -16,9 +16,15 @@
           buildInputs = [
             pkgs.python3
             (pkgs.python3.withPackages (ps: [
-              ps.mmrl-util
+              ps.pandoc
             ]))
           ];
+
+          shellHook = ''
+            if ! pip freeze | grep -q mmrl-util==; then
+              pip install --user mmrl-util
+            fi
+          '';
         };
       });
 }
