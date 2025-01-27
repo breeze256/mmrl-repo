@@ -22,12 +22,21 @@
           ];
 
           shellHook = ''
-            cp -f ./scripts/inject-libmagic.pth ./.venv/lib/python3.11/site-packages/inject-libmagic.pth
-            # Add virtual environment.
-            python -m venv .venv
-            source .venv/bin/activate
-            # Install requirements.
-            pip install -r requirements.txt
+            if [ -d "./.venv" ]; then
+              # Directly activate.
+              source .venv/bin/activate
+            else 
+              # Create virtual env.
+              python -m venv .venv
+              
+              # Inject libmagic.
+              PY_LIB_DIR=".venv/lib/$(python -c 'import sys; print(f"python{sys.version_info.major}.{sys.version_info.minor}")')/site-packages"
+              cp -f ./scripts/inject-libmagic.pth "$PY_LIB_DIR/"
+              
+              # Activate env and install requirements.
+              source .venv/bin/activate
+              pip install -r requirements.txt
+            fi
           '';
         };
       });
